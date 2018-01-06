@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { BlogLink } from '../components/Link';
-import { Date, PostTitle, PostExcerpt } from '../components/Post';
+import { Date, PostExcerptTitle, PostExcerpt } from '../components/Post';
 
 class BlogList extends Component {
   render() {
@@ -13,11 +13,11 @@ class BlogList extends Component {
             const title = post.node.frontmatter.title || post.node.path;
             return (
               <div key={post.node.frontmatter.path}>
-                <PostTitle>
+                <PostExcerptTitle>
                   <BlogLink to={post.node.frontmatter.path}>
                     {post.node.frontmatter.title}
                   </BlogLink>
-                </PostTitle>
+                </PostExcerptTitle>
                 <Date>{post.node.frontmatter.date}</Date>
                 <PostExcerpt
                   dangerouslySetInnerHTML={{ __html: post.node.excerpt }}
