@@ -1,0 +1,6 @@
+{
+  "name": "blog",
+  "alias": {
+    "NODE_ENV": "production"
+  }
+}
