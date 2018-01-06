@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gatsby develop",
+    "build": "gatsby build"
   },
   "keywords": [],
   "author": "",
@@ -19,13 +20,7 @@
     "babel-preset-env": "^1.6.1"
   },
   "babel": {
-    "presets": [
-      "react",
-      "env",
-      "stage-1"
-    ],
-    "plugins": [
-      "add-module-exports"
-    ]
+    "presets": ["react", "env", "stage-1"],
+    "plugins": ["add-module-exports"]
   }
 }

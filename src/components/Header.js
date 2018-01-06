@@ -19,8 +19,14 @@ class Header extends Component {
   render() {
     return (
       <Navbar>
-        NAVBAR
-        <Navigation />
+        <Brand to="/">Kjartan Angamaiton</Brand>
+        <Navigation>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/blog">Blog</Link>
+        </Navigation>
       </Navbar>
     );
   }
