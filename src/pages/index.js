@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
+
 import PostList from '../components/PostList';
 
 class Index extends Component {
@@ -26,7 +27,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fileAbsolutePath: { regex: "/(/src/pages)/.*\\.md$/" } }
+    ) {
       edges {
         node {
           excerpt

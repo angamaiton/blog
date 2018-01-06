@@ -1,24 +1,53 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled, { ThemeProvider } from 'styled-components';
+import theme from 'styled-theming';
+import { connect } from 'react-redux';
+
 import Header from '../components/Header';
 import { Wrapper, Container } from '../components/Wrapper';
 
 class TemplateWrapper extends Component {
   render() {
-    const { children } = this.props;
+    const {
+      changeLanguage,
+      changeMode,
+      location,
+      language,
+      mode,
+      children,
+    } = this.props;
     return (
-      <Wrapper>
-        <Container>
-          <Header />
-          <main>{children()}</main>
-        </Container>
-      </Wrapper>
+      <ThemeProvider theme={{ mode }}>
+        <Wrapper>
+          <Container>
+            <Header
+              language={language}
+              mode={mode}
+              changeLanguage={changeLanguage}
+              changeMode={changeMode}
+            />
+            <main>{children()}</main>
+          </Container>
+        </Wrapper>
+      </ThemeProvider>
     );
   }
 }
+
+const mapStateToProps = ({ mode, language }) => {
+  return { mode, language };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeMode: mode => dispatch({ type: `CHANGE_MODE`, mode }),
+    changeLanguage: language => dispatch({ type: `CHANGE_LANGUAGE`, language }),
+  };
+};
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
 };
 
-export default TemplateWrapper;
+export default connect(mapStateToProps, mapDispatchToProps)(TemplateWrapper);
